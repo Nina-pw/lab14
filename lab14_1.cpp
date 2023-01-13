@@ -17,3 +17,66 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+double AM(const double a[],int b){
+    double sum = 0;
+    for(int i = 0; i < b; i++){
+        sum += a[i];
+    }
+    return sum/b;
+}
+
+double SD(const double a[],int b){
+    double sum = 0;
+    double sd;
+    for(int i = 0; i < b; i++){
+        sum += pow(a[i],2);
+    }
+    sd = sqrt((sum/b)-(pow(AM(a,b),2)));
+    return sd;
+}
+
+double GM(const double a[],int b){
+    double x = 1;
+    for(int i = 0; i < b; i++){
+        x *= a[i];
+    }
+    return pow(x,(double)1/b);
+}
+
+double HM(const double a[],int b){
+    double x = 0;
+    for(int i = 0; i < b; i++){
+        x = x + (double)1/a[i];
+    }
+    return (double)b/x;
+}
+
+double MAX(const double a[],int b){
+    double max = a[0];
+    for(int i = 0; i < b; i++){
+        if(a[i] > max){
+            max = a[i];
+        }
+    }
+    return max;
+}
+
+double MIN(const double a[],int b){
+double min = a[0];
+    for(int i = 0; i < b; i++){
+        if(a[i] < min){
+            min = a[i];
+        }
+    }
+    return min;
+}
+
+void stat(const double A[],int N,double B[]){
+    B[0] = AM(A,N);
+    B[1] = SD(A,N);
+    B[2] = GM(A,N);
+    B[3] = HM(A,N);
+    B[4] = MAX(A,N);
+    B[5] = MIN(A,N);
+}
